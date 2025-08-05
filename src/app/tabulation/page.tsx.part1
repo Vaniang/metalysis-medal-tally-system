@@ -1,0 +1,71 @@
+"use client";
+
+import React, { useState } from "react";
+import { MedalTable } from "./MedalTables";
+import { eventsData } from "../../lib/eventsData";
+import BEST_PERFORMING_EVENTS from "./bestPerformingEvents";
+
+const CATEGORIES = ["ELEMENTARY", "SECONDARY", "PARA GAMES"];
+const GENDERS = ["BOYS", "GIRLS"];
+const MEDALS = ["Gold", "Silver", "Bronze"];
+const SDOS = [
+  "Alaminos City",
+  "Batac City",
+  "Candon City",
+  "Dagupan City",
+  "Ilocos Norte",
+  "Ilocos Sur",
+  "Laoag City",
+  "La Union",
+  "Pangasinan I",
+  "Pangasinan II",
+  "San Carlos City",
+  "San Fernando City",
+  "Urdaneta City",
+  "Vigan City",
+];
+
+export default function TabulationPage() {
+  const [activeTab, setActiveTab] = useState("Dashboard");
+  const [activeSubTab, setActiveSubTab] = useState("");
+  const [activeSubSubTab, setActiveSubSubTab] = useState(""); // third level dropdown
+  const [category, setCategory] = useState<keyof typeof eventsData | "">("");
+  const [gender, setGender] = useState<"BOYS" | "GIRLS" | "">("");
+  const [eventSelected, setEventSelected] = useState<string>("");
+  const [subCategorySelected, setSubCategorySelected] = useState<string>("");
+  const [subEventSelected, setSubEventSelected] = useState<string>("");
+  const [sdoSelected, setSdoSelected] = useState("");
+  const [medalSelected, setMedalSelected] = useState("");
+  const [medalData, setMedalData] = useState<any>({});
+
+  // Helper to get sub-sub-tabs (third level) based on activeSubTab
+  const getSubSubTabs = () => {
+    if (activeSubTab === "Elementary") {
+      return Object.keys(eventsData["Elementary"] || {});
+    } else if (activeSubTab === "Secondary") {
+      return Object.keys(eventsData["Secondary Boys"] || {});
+    } else if (activeSubTab === "Best Performing") {
+      return Object.keys(BEST_PERFORMING_EVENTS);
+    }
+    return [];
+  };
+
+  const tabs = [
+    "Dashboard",
+    {
+      name: "Regular Games",
+      subTabs: ["Elementary", "Secondary", "Best Performing"],
+    },
+    {
+      name: "Summary",
+      subTabs: [
+        "Summary Elementary",
+        "Summary Secondary",
+        "Para Games",
+        "Overall Para Games",
+        "Overall Regular Games",
+      ],
+    },
+    "Athletes List",
+    "Protest",
+  ];
