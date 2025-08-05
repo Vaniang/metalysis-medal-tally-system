@@ -1,0 +1,27 @@
+const BEST_PERFORMING_EVENTS = {
+  ARCHERY: [],
+  ARNIS: [],
+  ATHLETICS: [],
+  BADMINTON: [],
+  BASEBALL: [],
+  BASKETBALL: [],
+  BOXING: [],
+  BILLIARDS: [],
+  CHESS: [],
+  DANCESPORTS: [],
+  FOOTBALL: [],
+  FUTSAL: [],
+  GYMNASTICS: [],
+  PENCAK_SILAT: [],
+  SOFTBALL: [],
+  SEPAK_TAKRAW: [],
+  SWIMMING: [],
+  TABLE_TENNIS: [],
+  TAEKWONDO: [],
+  TENNIS: [],
+  VOLLEYBALL: [],
+  WUSHU: [],
+  WRESTLING: [],
+};
+
+export default BEST_PERFORMING_EVENTS;
